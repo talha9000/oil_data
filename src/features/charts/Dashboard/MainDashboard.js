@@ -1,16 +1,25 @@
 import React from 'react';
 import LineChart from '../LineChart/LineChart';
-
+import { useState,useEffect,useRef } from 'react';
+import {mor} from './index'
 const MainDashboard = () => {
-  return (
+    const [omr, soomr] = useState([])
+ 
+    useEffect(() => {
+        soomr(mor.map((v, i) => v));
+ 
+    }, [])
+   console.log(omr.map((v,i)=>{return v.month}))
+    return (
+      
       <>
           <div className='pt-44'>
                   <div className="container mx-auto p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
         <div className="card w-full bg-base-100 shadow-xl p-4 h-80">
-          <h2 className="text-xl font-bold mb-4">MOnthly Oil change Duration</h2>
+          <h2 className="text-xl font-bold mb-4">Monthly Oil change Duration</h2>
           <div className="h-full">
-            <LineChart ydata={[195000,199000,200000,]} xdata={['jan','feb','march','apr','may','june','jully','august','sep','oct','nov','dec']}/>
+         <LineChart ydata={[195000, 199000, 200000,]} xdata={omr.map((v,i)=>{return v.month})} />
           </div>
         </div>
         <div className="md:col-start-2 lg:col-start-1 card w-full bg-base-100 shadow-xl p-4 h-80">
