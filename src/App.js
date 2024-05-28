@@ -6,8 +6,11 @@ import Navbar from './component/Navbar';
 import Drawer from './component/Drawer';
 import PageLayout from './container/PageLayout';
 import Loader from './component/Loader';
+import LineChart from './features/charts/LineChart/LineChart';
+ import MainDashboard from './features/charts/Dashboard/MainDashboard';
  const Login=lazy(()=>import("./fixroute/Login"))
- const Signup=lazy(()=>import("./fixroute/Signup"))
+const Signup = lazy(() => import("./fixroute/Signup"))
+
 const App = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
@@ -17,6 +20,7 @@ const App = () => {
 
   return (
     <>
+    
       <Navbar ButtonEvent={toggleDrawer} />
       <Drawer toggleDrawer={isDrawerOpen} />
       <Suspense fallback={<Loader/>}>
